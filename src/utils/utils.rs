@@ -10,5 +10,7 @@ struct DevReporter {
 }
 
 impl DevReporter {
-
+  pub fn all(data: &Game_Data) {
+    
+  }
 }
