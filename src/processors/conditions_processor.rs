@@ -1,16 +1,17 @@
 
-use crate::structs::game_data::Game_Data;
+//use crate::structs::game_data::Game_Data;
+use crate::structs::game_state::GameState;
 
    // Update Game Date
     // let current_date = start_date + (i * 7);
     // let current_date = start_date + "00".to_string();
 
-pub fn cycle_conditions(game_data: &mut Game_Data) {
+pub fn cycle_conditions(game_state: &mut GameState) {
 
     // calandar
     // game_data.week_number += 1;                         //TODO: game_data.game_date::increment_week();
-    game_data.game_date.increment_week();
-    println!("Week # {}", game_data.game_date.week_number);
+    game_state.game_date.increment_week();
+    println!("Week # {}", game_state.game_date.week_number);
 
     // biomes
 

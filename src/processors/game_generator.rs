@@ -1,3 +1,4 @@
+/*
 use crate::structs::game_data::Game_Data;
 // use crate::structs::game_data::Game_Data;
 // use crate::structs::biome::Biome;
@@ -70,3 +71,4 @@ pub fn generate_legs() -> Vec<Leg> {
 
 
 // for leg in &legs { println!("ref {}, destination {}, distance {}, guide_note {}", leg.name, leg.destination, leg.distance, leg.guide_note );}
+*/

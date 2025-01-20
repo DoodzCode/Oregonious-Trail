@@ -1,10 +1,10 @@
 use crate::structs::{
     biome::Biome,
     location::Location,
-    segment::Leg,
+    segment::Segment,
     party::Party,
 };
-use crate::processors::game_generator::{generate_legs, generate_parties};
+//use crate::processors::game_generator::{generate_legs, generate_parties};
 
 /// Game_Data - conditions (states) that are not influenced by the conditions of the trail (biomes, segments), or the parties (wagons, people, animals). 
 #[derive(Debug)]
@@ -13,9 +13,9 @@ pub struct GameState{
     pub game_length: u8,
     pub game_date: GameDate,
     pub biomes: Vec<Biome>,
-    pub legs: Vec<Leg>,
+    pub segments: Vec<Segment>,
     pub parties: Vec<Party>,
-    locations: Vec<Location>,
+    pub locations: Vec<Location>,
     // pub score: Vec<Player_Score>,
 }
 
@@ -31,9 +31,10 @@ impl GameState {
                 week_number: 0, month: String::from("April"),
             },
             biomes: Vec::new(),
+            segments: Vec::new(),
             locations: Vec::new(),
-            legs: generate_legs(),
-            parties: generate_parties(),
+            parties: Vec::new(),
+            //parties: generate_parties(),
                 // score: Vec::new(),
         };
 
@@ -41,12 +42,12 @@ impl GameState {
 
             game_state.locations.push(Location{name: String::from("Independence"), elevation: 1033});
 
-            game_state.legs.push(Leg { name: String::from("segment-1"), distance: 350 });
-            game_state.legs.push(Leg { name: String::from("segment-2"), distance: 350 });
-            game_state.legs.push(Leg { name: String::from("segment-3"), distance: 350 });
-            game_state.legs.push(Leg { name: String::from("segment-4"), distance: 350 });
-            game_state.legs.push(Leg { name: String::from("segment-5"), distance: 350 });
-            game_state.legs.push(Leg { name: String::from("segment-6"), distance: 350 });
+            game_state.segments.push(Segment { name: String::from("segment-1"), distance: 350 });
+            game_state.segments.push(Segment { name: String::from("segment-2"), distance: 350 });
+            game_state.segments.push(Segment { name: String::from("segment-3"), distance: 350 });
+            game_state.segments.push(Segment { name: String::from("segment-4"), distance: 350 });
+            game_state.segments.push(Segment { name: String::from("segment-5"), distance: 350 });
+            game_state.segments.push(Segment { name: String::from("segment-6"), distance: 350 });
 
             game_state
 

@@ -1,4 +1,4 @@
-pub mod game_data;
+pub mod game_state;
 pub mod biome;
 pub mod segment;
 pub mod location;

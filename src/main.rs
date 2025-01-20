@@ -4,15 +4,9 @@ mod structs;
 extern crate chrono;
 
 use processors::conditions_processor::cycle_conditions;
-use processors::game_generator::{generate_game, generate_legs};
+//use processors::game_generator::{generate_game, generate_legs};
 use processors::report_processor::status_report;
-use structs::{
-    game_data::Game_Data,
-    // biome::Biome,
-    // leg::Leg,
-    // location::Location,
-    // party::Party,
-};
+use structs::game_state::{self, GameState};
 
 //TODO come back to the question of do we need territories to be separate?
 // struct Territory {
@@ -20,23 +14,22 @@ use structs::{
 // }
 
 fn main() {
+
     // startup
     println!("-----------------------------------------------------------------------");
     println!("SETUP");
     println!("-----------------------------------------------------------------------");
     println!();
 
-    // let mut game_data: Game_Data = Game_Data::create_game();
-    let mut game_data: Game_Data = generate_game();
-
-    status_report(&mut game_data);
+    let mut game_state: GameState = GameState::create_game();
+    status_report(&mut game_state);
 
     // main loop
     loop {
-        if game_data.game_date.week_number > game_data.game_length - 1 {
+        if game_state.game_date.week_number > game_state.game_length - 1 {
             break;
         }
-        cycle_conditions(&mut game_data);
+        cycle_conditions(&mut game_state);
         // user prompt
         //* decision_controller();
         //cycle actions
@@ -46,13 +39,15 @@ fn main() {
         // Global Report
     }
 
+    /*------------------------------------------------------------------------------------------- */
+
+
+    /*  main recursive function
+
     fn game_loop(game_cycle: u8) -> u8 {
         if is_end_of_game(game_cycle) {
             return 0;
         }
-
-        // Game Loop Stuff
-        cycle_conditions(&mut game_data);
 
         game_loop(game_cycle - 1)
     }
@@ -61,7 +56,6 @@ fn main() {
         cycle_number < 1
     }
 
-/*------------------------------------------------------------------------------------------- */
 
     // let outer_var = 42;
     
@@ -89,21 +83,10 @@ fn main() {
     // let one = || 1;
     // println!("closure returning one: {}", one());
 
-/*------------------------------------------------------------------------------------------- */
-
-
-
-
-
-
-
-
-
+------------------------------------------------------------------------------------------- */
 
     // shutdown
+    GameState::close_game();
+
 }
 
-/*
-round
-    player turn
-*/
