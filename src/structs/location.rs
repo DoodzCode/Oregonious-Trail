@@ -1,5 +1,7 @@
 
 #[derive(Debug)]
 pub struct Location {
-  name: String,
+  pub name: String,
+  pub elevation: u32,
 }
+

@@ -1,7 +1,7 @@
 use crate::structs::game_data::Game_Data;
 // use crate::structs::game_data::Game_Data;
 // use crate::structs::biome::Biome;
-use crate::structs::leg::Leg;
+use crate::structs::segment::Leg;
 use crate::structs::party::Party;
 
 pub fn generate_game() -> Game_Data {

@@ -1,44 +1,62 @@
 use crate::structs::{
     biome::Biome,
-    leg::Leg,
+    location::Location,
+    segment::Leg,
     party::Party,
 };
 use crate::processors::game_generator::{generate_legs, generate_parties};
 
 /// Game_Data - conditions (states) that are not influenced by the conditions of the trail (biomes, segments), or the parties (wagons, people, animals). 
 #[derive(Debug)]
-pub struct Game_Data{
+pub struct GameState{
     pub start_date: String,
     pub game_length: u8,
     pub game_date: GameDate,
     pub biomes: Vec<Biome>,
     pub legs: Vec<Leg>,
     pub parties: Vec<Party>,
-    pub score: Vec<Player_Score>,
+    locations: Vec<Location>,
+    // pub score: Vec<Player_Score>,
 }
 
 
-impl Game_Data {
-    pub fn create_game() -> Game_Data {
+impl GameState {
 
-        let mut test_data = Game_Data { 
+    pub fn create_game() -> GameState {
+
+        let mut game_state = GameState { 
             start_date: String::from("April 15, 1842"),
             game_length: 26,
             game_date: GameDate {
                 week_number: 0, month: String::from("April"),
             },
             biomes: Vec::new(),
+            locations: Vec::new(),
             legs: generate_legs(),
             parties: generate_parties(),
-            score: Vec::new(),
+                // score: Vec::new(),
         };
 
-        test_data.biomes.push(Biome{ name: String::from("Biome Uno") });
-        test_data
+            game_state.biomes.push(Biome{ name: String::from("Biome 1: Lower Plains") });
+
+            game_state.locations.push(Location{name: String::from("Independence"), elevation: 1033});
+
+            game_state.legs.push(Leg { name: String::from("segment-1"), distance: 350 });
+            game_state.legs.push(Leg { name: String::from("segment-2"), distance: 350 });
+            game_state.legs.push(Leg { name: String::from("segment-3"), distance: 350 });
+            game_state.legs.push(Leg { name: String::from("segment-4"), distance: 350 });
+            game_state.legs.push(Leg { name: String::from("segment-5"), distance: 350 });
+            game_state.legs.push(Leg { name: String::from("segment-6"), distance: 350 });
+
+            game_state
 
         }
-    }
 
+    pub fn close_game() -> u16 { 0 }
+
+}
+
+    
 #[derive(Debug)]
 pub struct GameDate {
     pub week_number: u8,
@@ -52,6 +70,7 @@ impl GameDate {
     }
 }
 
+/* 
 // score 
 #[derive(Debug)]
 pub struct Player_Score {
@@ -74,3 +93,4 @@ impl Player_Score {
         self.head_count -= dec;
     }
 }
+*/
