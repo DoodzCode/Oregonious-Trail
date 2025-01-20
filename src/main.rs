@@ -25,8 +25,11 @@ fn main() {
     // let mut game_data: Game_Data = Game_Data::create_game();
     let mut game_data: Game_Data = Game_Data::create_game();
 
+    println!("STATUS REPORT");
+    println!();
     status_report(&mut game_data);
 
+    println!("MAIN LOOP START");
     // main loop
     loop {
         if game_data.game_date.week_number > game_data.game_length - 1 {
@@ -41,6 +44,8 @@ fn main() {
         //* decision_controller();
         // Global Report
     }
+    println!("MAIN LOOP END");
+    println!("Weeks Elapsed: {:?}", game_data.game_date.week_number);
 
     // shutdown
 }

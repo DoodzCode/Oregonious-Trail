@@ -9,7 +9,7 @@ pub struct Game_Data {
     pub game_date: GameDate,
     pub biomes: Vec<Biome>,
     pub legs: Vec<Leg>,
-    // pub parties: Vec<Party>,
+    pub parties: Vec<Party>,
     pub score: Vec<Player_Score>,
 }
 
@@ -24,7 +24,7 @@ impl Game_Data {
             },
             biomes: Vec::new(),
             legs: generate_legs(),
-            // parties: generate_parties(),
+            parties: Party::generate_test_parties(),
             score: Vec::new(),
         };
 
@@ -55,11 +55,6 @@ pub enum ActionType {
     IncWeek,
 }
 
-// enum StateType {
-//     Party,
-//     World,
-//     Global,
-// }
 
 #[derive(Debug)]
 pub struct GameDate {

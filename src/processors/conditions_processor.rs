@@ -11,7 +11,7 @@ pub fn cycle_conditions(game_data: &mut Game_Data) {
         action: ActionType::IncWeek,
     });
 
-    println!("Week # {}", game_data.game_date.week_number);
+    // println!("Week # {}", game_data.game_date.week_number);
 
     // biomes
 
